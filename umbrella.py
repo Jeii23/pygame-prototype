@@ -8,13 +8,13 @@ from screen import Screen
 
 # Define the enemy object extending pygame.sprite.Sprite
 # Instead of a surface, we use an image for a better looking sprite
-class Bird(pygame.sprite.Sprite):
+class Umbrella(pygame.sprite.Sprite):
     Max_Speed = 10
     Min_Speed = 5
 
     def __init__(self):
-        super(Bird, self).__init__()
-        self.surf = pygame.image.load("icons/bird.png").convert()
+        super(Umbrella, self).__init__()
+        self.surf = pygame.image.load("icons/umbrella.png").convert()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         # The starting position is randomly generated, as is the speed
         self.rect = self.surf.get_rect(
@@ -26,15 +26,16 @@ class Bird(pygame.sprite.Sprite):
         self.speed = random.randint(self.Min_Speed, self.Max_Speed)
         self.time = 0
 
-    # Move the bird based on speed
+    # Move the Umbrella based on speed
     # Remove it when it passes the left edge of the screen.py
     def update(self):
         self.time += 1
-        speed_x = -self.speed
-        speed_y = 0.75 * self.speed \
+        speed_y = -self.speed
+        speed_x = 0.75 * self.speed \
                   * math.cos(2 * math.pi * self.time / (0.05 * Screen.width))
         self.rect.move_ip(speed_x, speed_y)
         if self.rect.right < 0:
             self.kill()
+
     def clone(self):
-        return Bird()
+        return Umbrella()

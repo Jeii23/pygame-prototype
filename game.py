@@ -61,30 +61,26 @@ class Game:
             "sounds_music/Explosion_10.ogg")
         self._collision_sound.set_volume(0.5)
 
+    def _factory_flying(self):
+
+    def _factory_landscape(self):
+
     def _process_event(self):
-        # Look at every event in the queue
         for event in pygame.event.get():
-            print('event type = {}'.format(event.type))
-            # Did the user hit a key?
-            if event.type == KEYDOWN:
-                # Was it the Escape key? If so, stop the loop
-                if event.key == K_ESCAPE:
-                    self._user_quits = True
-            # Did the user click the window close button? If so, stop the loop
-            elif event.type == QUIT:
-                self._user_quits = True
-            # Should we add a new bird?
-            elif event.type == self._add_bird_event_type:
-                # Create the new bird, and add it to our sprite groups
-                new_bird = Bird()
-                self._birds.add(new_bird)
-                self._all_sprites.add(new_bird)
-            # Should we add a new cloud?
-            elif event.type == self._add_cloud_event_type:
-                # Create the new cloud, and add it to our sprite groups
-                new_cloud = Cloud()
-                self._clouds.add(new_cloud)
-                self._all_sprites.add(new_cloud)
+            :
+            elif event.type in self._factory_flying.event_types:
+                # Create the new flying object, and add it to
+                # our sprite groups
+                new_flying = self._factory_flying.make(event.type)
+                self._flying_sprites.add(new_flying)
+                self._all_sprites.add(new_flying)
+            # Should we add a new landscape object?
+            elif event.type in self._factory_landscape.event_types:
+                # Create the new landscape object, and add it to
+                # our sprite groups
+                new_landscape = self._factory_landscape.make(event.type)
+                self._landscape_sprites.add(new_landscape)
+                self._all_sprites.add(new_landscape)
 
     def _update(self):
         # Get the set of keys pressed and check for user input
