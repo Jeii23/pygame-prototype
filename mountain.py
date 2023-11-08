@@ -2,12 +2,13 @@ import pygame
 import random
 from pygame.locals import RLEACCEL
 
+from gameSprite import GameSprite
 from screen import Screen
 
 
 # Define the cloud object extending pygame.sprite.Sprite
 # Use an image for a better looking sprite
-class Mountain(pygame.sprite.Sprite):
+class Mountain(GameSprite):
     def __init__(self):
         super(Mountain, self).__init__()
         self.surf = pygame.image.load("icons/mountain.png").convert()
@@ -16,7 +17,7 @@ class Mountain(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(
             center=(
                 random.randint(Screen.height, Screen.width + 100),
-                random.randint(0, Screen.height),
+                random.randint(Screen.height, Screen.height),
             )
         )
 

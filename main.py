@@ -12,15 +12,15 @@ pygame.mixer.init()
 pygame.init()
 # create the screen object
 pygame.display.set_mode((Screen.width, Screen.height))
-level = 'easy'
+level = 'difficult'
 # play
 if level=='easy':
     # easy game, only birds and clouds
     factory_flying = FactorySprites([Bird()], [300], pygame.USEREVENT + 1)
-    factory_landscape = FactorySprites([Bird()], [300], pygame.USEREVENT + 1)
+    factory_landscape = FactorySprites([Cloud()], [400], pygame.USEREVENT + 10)
 elif level=='difficult':
-    factory_flying = FactorySprites([Bird()], [300], pygame.USEREVENT + 1)
-    factory_landscape = FactorySprites([Bird()], [300], pygame.USEREVENT + 1)
+    factory_flying = FactorySprites([Bird(),Umbrella()], [400, 500], pygame.USEREVENT + 1)
+    factory_landscape = FactorySprites([Cloud(), Mountain()], [500, 2000,], pygame.USEREVENT + 10)
 else:
     assert False
 # start playing

@@ -3,11 +3,12 @@ import random
 from pygame.locals import RLEACCEL
 
 from screen import Screen
+from gameSprite import GameSprite
 
 
 # Define the cloud object extending pygame.sprite.Sprite
 # Use an image for a better looking sprite
-class Cloud(pygame.sprite.Sprite):
+class Cloud(GameSprite):
     def __init__(self):
         super(Cloud, self).__init__()
         self.surf = pygame.image.load("icons/cloud.png").convert()
