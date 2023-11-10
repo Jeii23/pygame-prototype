@@ -9,5 +9,5 @@ class FactorySprites:
         for prototype, frequency, event_type in zip(self._prototypes, self._periods, self.event_types):
             pygame.time.set_timer(event_type, frequency)
 
-    def _make(self, event_type):
+    def make(self, event_type):
         return self._prototypes[event_type - self.event_types[0]].clone()

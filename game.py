@@ -73,14 +73,14 @@ class Game:
             elif event.type in self._factory_flying.event_types:
                 # Create the new flying object, and add it to
                 # our sprite groups
-                new_flying = self._factory_flying._make(event.type)
+                new_flying = self._factory_flying.make(event.type)
                 self._flying_sprites.add(new_flying)
                 self._all_sprites.add(new_flying)
             # Should we add a new landscape object?
             elif event.type in self._factory_landscape.event_types:
                 # Create the new landscape object, and add it to
                 # our sprite groups
-                new_landscape = self._factory_landscape._make(event.type)
+                new_landscape = self._factory_landscape.make(event.type)
                 self._landscape_sprites.add(new_landscape)
                 self._all_sprites.add(new_landscape)
 

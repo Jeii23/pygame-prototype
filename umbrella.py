@@ -25,14 +25,11 @@ class Umbrella(GameSprite):
             )
         )
         self.speed = random.randint(self.Min_Speed, self.Max_Speed)
-        self.time = 0
 
     # Move the Umbrella based on speed
     # Remove it when it passes the left edge of the screen.py
     def update(self):
-        self.time += 1
-        speed_x = 0.75 * self.speed \
-                  * math.cos(2 * math.pi * self.time / (0.05 * Screen.width))
+        speed_x = 0
         speed_y = self.speed
         self.rect.move_ip(speed_x, speed_y)
         if  self.rect.bottom > Screen.height:
